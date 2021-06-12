@@ -7,55 +7,52 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div class="CSSgal">
+    <main class="gallery" tabindex="1" id="gallery">
+      <section class="slide">
+        <img src="./img/_DSF2177.jpg" alt="">
+      </section>
+      <section class="slide" id="s2">
+        <img src="./img/_DSF2188.jpg" alt="">
+        <img src="./img/_DSF2192.jpg" alt="">
+      </section>
+      <section class="slide">
+        <img src="./img/_DSF2189.jpg" alt="">
+      </section>
+      <section class="slide">
+        <img src="./img/_DSF2149.jpg" alt="">
+      </section>
+      <section class="slide">
+        <img src="./img/_DSF2140.jpg" alt="">
+      </section>
+    </main>
 
-      <!-- Don't wrap targets in parent -->
-      <s id="s1"></s> 
-      <s id="s2"></s>
-      <s id="s3"></s>
-      <s id="s4"></s>
-      <s id="s5"></s>
+    <script>
+      function transformScroll(evt) {
+        if (!evt.deltaY) {
+          return;
+        }
 
-      <div class="slider">
-        <div id="slide1" class="slide">
-          <img src="./img/_DSF2177.jpg" alt="">
-        </div>
-        <div id="slide2" class="slide">
-          <div>
-            <figure>
-              <img src="./img/_DSF2188.jpg" alt="">
-            </figure>
-            <figure>
-              <img src="./img/_DSF2192.jpg" alt="">
-            </figure>
-          </div>
-        </div>
-        <div id="slide3" class="slide">
-          <img src="./img/_DSF2189.jpg" alt="">
-        </div>
-        <div id="slide4" class="slide">
-          <img src="./img/_DSF2149.jpg" alt="">
-        </div>
-        <div id="slide5" class="slide">
-          <img src="./img/_DSF2140.jpg" alt="">
-        </div>
-      </div>
+        evt.currentTarget.scrollLeft += evt.deltaY + evt.deltaX;
+        evt.preventDefault();
+      }
 
-      <div class="prevNext">
-        <div><a href="#s4"></a><a href="#s2"></a></div>
-        <div><a href="#s1"></a><a href="#s3"></a></div>
-        <div><a href="#s2"></a><a href="#s4"></a></div>
-        <div><a href="#s3"></a><a href="#s5"></a></div>
-        <div><a href="#s4"></a><a href="#s1"></a></div>
-      </div>
+      function move(evt) {
+        switch (evt.key) {
+          case "ArrowLeft":
+            window.scrollTo(window.scrollX - 1, window.scrollY);
+            break;
+          case "ArrowRight":
+            window.scrollTo(window.scrollX + 1, window.scrollY);
+            break;
+        }
+      }
 
-      <div class="bullets">
-        <a href="#s1">1</a>
-        <a href="#s2">2</a>
-        <a href="#s3">3</a>
-        <a href="#s4">4</a>
-        <a href="#s5">5</a>
-      </div>
-    </div>
+      document.getElementById("gallery").focus();
+      const element = document.scrollingElement || document.documentElement
+      element.addEventListener('scroll', transformScroll)
+      element.addEventListener('wheel', transformScroll)
+      document.addEventListener('keydown', move)
+
+    </script>
   </body>
 </html>

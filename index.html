@@ -27,32 +27,36 @@
     </main>
 
     <script>
-      function transformScroll(evt) {
+      function transformWheel(evt) {
         if (!evt.deltaY) {
           return;
         }
 
         evt.currentTarget.scrollLeft += evt.deltaY + evt.deltaX;
-        evt.preventDefault();
       }
 
+      const gallery = document.getElementById("gallery");
+      gallery.focus();
+
       function move(evt) {
+        const items = gallery.children.length;
+
+        const width = gallery.scrollWidth / items;
+        const currentItem = gallery.scrollLeft / items;
+
         switch (evt.key) {
-          case "ArrowLeft":
-            window.scrollTo(window.scrollX - 1, window.scrollY);
+          case "ArrowUp":
+            gallery.scrollTo(gallery.scrollLeft - width, gallery.scrollTop);
             break;
-          case "ArrowRight":
-            window.scrollTo(window.scrollX + 1, window.scrollY);
+          case "ArrowDown":
+            gallery.scrollBy(gallery.scrollLeft + width, gallery.scrollTop);
             break;
         }
       }
 
-      document.getElementById("gallery").focus();
       const element = document.scrollingElement || document.documentElement
-      element.addEventListener('scroll', transformScroll)
-      element.addEventListener('wheel', transformScroll)
+      element.addEventListener('wheel', transformWheel)
       document.addEventListener('keydown', move)
-
     </script>
   </body>
 </html>

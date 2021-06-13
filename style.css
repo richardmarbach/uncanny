@@ -41,17 +41,17 @@ img {
 #s2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(12, 1fr);
+  /* grid-template-rows: repeat(12, 1fr); */
   grid-column-gap: 10%;
 }
 
 #s2 img:first-child {
-  grid-row: 2 / 9;
+  /* grid-row: 2 / 9; */
   justify-self: end;
 }
 
-#s2 img:last-child {
-  grid-row: 1 / 13;
-  justify-self: start;
-}
+/* #s2 img:last-child { */
+/*   grid-row: 1 / 13; */
+/*   justify-self: start; */
+/* } */
 

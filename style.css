@@ -35,17 +35,18 @@ img {
 
   display: flex;
   justify-content: center;
-  padding: 4%;
+  padding: 5% 10%;
 }
 
 #s2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 10%;
 }
 
 #s2 img:first-child {
-  grid-row: 2 / 10;
+  grid-row: 2 / 9;
   justify-self: end;
 }
 

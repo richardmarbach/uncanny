@@ -16,13 +16,9 @@ img {
   max-height: 100%;
 }
 
-@media (orientation: portrait) {
-  img {
-    width: 100%;
-  }
-}
-
 .gallery {
+  height: 100%;
+  width: 100%;
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -33,21 +29,34 @@ img {
   scroll-snap-align: center;
   scroll-snap-stop: always;
 
-  width: 100vw;
-  height: 100vh;
-  flex: 0 0 100vw;
+  width: 100%;
+  height: 100%;
+  flex: 0 0 100%;
 
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 5% 10%;
 }
 
 #s2 img:first-child {
-  justify-self: end;
   padding-right: 5%;
 }
 
 #s2 img:last-child {
   padding-left: 10%;
+}
+
+@media (orientation: portrait) {
+  #s2 {
+    flex-wrap: wrap;
+    overflow-y: auto;
+  }
+
+  #s2 img:first-child,
+  #s2 img:last-child {
+    padding: 0;
+    justify-self: center;
+  }
 }
 
